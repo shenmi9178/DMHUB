@@ -92,7 +92,7 @@ local Tab16 = Tab("EVADE")
 local Tab17 = Tab("锻造厂")
 local Tab18 = Tab("通缉")
 local Tab19 = Tab("被遗弃")
-local Tab20 = Tab("黄片😍😍😍😍")
+local Tab20 = Tab("黄片")
 local Tabd = Tab("催更地点")
 local Tabb = Tab("设置")
 
