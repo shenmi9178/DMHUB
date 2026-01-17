@@ -1,0 +1,102 @@
+-- DM脚本工作室（冬某）专属时间显示脚本
+-- 适用Roblox客户端，挂载到StarterGui的ScreenGui下
+
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+
+-- 获取本地玩家
+local localPlayer = Players.LocalPlayer
+local playerGui = localPlayer:WaitForChild("PlayerGui")
+
+-- 创建UI容器
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "DMTimerGui"
+screenGui.Parent = playerGui
+
+-- 创建主框架（正方形适配）
+local mainFrame = Instance.new("Frame")
+mainFrame.Name = "TimerFrame"
+mainFrame.Size = UDim2.new(0, 250, 0, 250)  -- 正方形尺寸
+mainFrame.Position = UDim2.new(0.02, 0, 0.02, 0)  -- 左上角显示
+mainFrame.BackgroundColor3 = Color3.fromRGB(15, 15, 30)
+mainFrame.BackgroundTransparency = 0.2
+mainFrame.BorderSizePixel = 0
+mainFrame.CornerRadius = UDim.new(0, 12)
+mainFrame.Parent = screenGui
+
+-- 添加DM标识
+local dmLogo = Instance.new("TextLabel")
+dmLogo.Name = "DMLogo"
+dmLogo.Size = UDim2.new(1, 0, 0.2, 0)
+dmLogo.Position = UDim2.new(0, 0, 0, 0)
+dmLogo.BackgroundTransparency = 1
+dmLogo.Text = "DM"  -- 移除 Dark Winter 仅保留 DM
+dmLogo.Font = Enum.Font.GothamBold
+dmLogo.TextColor3 = Color3.fromRGB(0, 200, 255)
+dmLogo.TextSize = 16
+dmLogo.Parent = mainFrame
+
+-- 添加时间显示文本
+local timeLabel = Instance.new("TextLabel")
+timeLabel.Name = "TimeLabel"
+timeLabel.Size = UDim2.new(1, 0, 0.6, 0)
+timeLabel.Position = UDim2.new(0, 0, 0.2, 0)
+timeLabel.BackgroundTransparency = 1
+timeLabel.Text = "00:00:00"
+timeLabel.Font = Enum.Font.Code
+timeLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+timeLabel.TextSize = 24
+timeLabel.Parent = mainFrame
+
+-- 添加冬某署名
+local authorLabel = Instance.new("TextLabel")
+authorLabel.Name = "AuthorLabel"
+authorLabel.Size = UDim2.new(1, 0, 0.2, 0)
+authorLabel.Position = UDim2.new(0, 0, 0.8, 0)
+authorLabel.BackgroundTransparency = 1
+authorLabel.Text = "冬某 制作"
+authorLabel.Font = Enum.Font.Gotham
+authorLabel.TextColor3 = Color3.fromRGB(180, 180, 180)
+authorLabel.TextSize = 12
+authorLabel.Parent = mainFrame
+
+-- 实时更新时间函数
+local function updateTime()
+    local currentTime = os.date("%H:%M:%S")  -- 24小时制时间格式
+    timeLabel.Text = currentTime
+end
+
+-- 每帧更新
+RunService.RenderStepped:Connect(updateTime)
+
+-- 鼠标拖动功能（可选）
+local isDragging = false
+local dragStartPos = Vector2.new()
+local frameStartPos = UDim2.new()
+
+mainFrame.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        isDragging = true
+        dragStartPos = UserInputService:GetMouseLocation()
+        frameStartPos = mainFrame.Position
+    end
+end)
+
+UserInputService.InputChanged:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseMovement and isDragging then
+        local mouseDelta = UserInputService:GetMouseLocation() - dragStartPos
+        mainFrame.Position = UDim2.new(
+            frameStartPos.X.Scale,
+            frameStartPos.X.Offset + mouseDelta.X,
+            frameStartPos.Y.Scale,
+            frameStartPos.Y.Offset + mouseDelta.Y
+        )
+    end
+end)
+
+mainFrame.InputEnded:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        isDragging = false
+    end
+end)
