@@ -1,0 +1,51 @@
+-- DM脚本工作室（冬某）专属远程脚本加载器
+-- 适用Roblox服务端，挂载到ServerScriptService，需开启HttpService
+local HttpService = game:GetService("HttpService")
+local ServerScriptService = game:GetService("ServerScriptService")
+
+-- 配置项：DM HUB 远程脚本链接
+local DM_HUB_URL = "https://raw.githubusercontent.com/shenmi9178/DMHUB/refs/heads/main/DM%20HUB.lua"
+-- 是否输出加载日志
+local ENABLE_LOG = true
+
+-- DM 专属日志函数
+local function printDM(message)
+    if ENABLE_LOG then
+        print(string.format("[DM 远程加载器] %s", message))
+    end
+end
+
+-- 加载远程脚本的核心函数
+local function loadDMHub()
+    printDM("============ 开始加载 DM HUB ============")
+    printDM(string.format("正在请求远程脚本：%s", DM_HUB_URL))
+    
+    -- 尝试请求并执行远程脚本
+    local success, result = pcall(function()
+        -- 发送HTTP请求获取脚本内容
+        local scriptContent = HttpService:GetAsync(DM_HUB_URL, true)
+        -- 执行加载脚本
+        loadstring(scriptContent)()
+        return true
+    end)
+    
+    -- 输出加载结果
+    if success then
+        printDM("✅ DM HUB 加载成功！")
+    else
+        printDM(string.format("❌ DM HUB 加载失败 | 错误信息：%s", result))
+        printDM("⚠️ 请检查：1. HttpService是否开启 2. 脚本链接是否有效 3. 网络是否正常")
+    end
+    printDM("============ 加载流程结束 ============")
+end
+
+-- 检查HttpService状态
+if not HttpService.HttpEnabled then
+    printDM("❌ 错误：HttpService 未开启，请在游戏设置中启用")
+else
+    -- 执行加载
+    loadDMHub()
+end
+
+-- 冬某 制作 标识
+printDM("由 冬某 制作 | 远程脚本加载器已启动")
