@@ -8,7 +8,7 @@ _G.DM_Execution_Count = 1
 
 local WindUI = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua"))()
 local Window = WindUI:CreateWindow({
-    Title = "DM脚本",
+    Title = "DM HUB",
     Icon = "crown",
     Author = "by:冬某",
     AuthorImage = 90840643379863,
@@ -25,7 +25,7 @@ local Window = WindUI:CreateWindow({
 })
 
 Window:EditOpenButton({
-    Title = "DM",
+    Title = "DM HUB",
     Icon = "crown",
     CornerRadius = UDim.new(1, 0),
     StrokeThickness = 3,
