@@ -92,6 +92,7 @@ local Tab16 = Tab("EVADE")
 local Tab17 = Tab("锻造厂")
 local Tab18 = Tab("通缉")
 local Tab19 = Tab("被遗弃")
+local Tab20 = Tab("黄片😍😍😍😍")
 local Tabd = Tab("催更地点")
 local Tabb = Tab("设置")
 
@@ -2216,3 +2217,168 @@ pcall(function()
      loadstring(game:HttpGet("https://pastebin.com/raw/9fFu43FF"))()
      loadstring(game:HttpGet("https://raw.githubusercontent.com/phareignxd/xemonscripts/refs/heads/main/antiloggerv2"))()
  end)
+
+Tab20:Paragraph({
+    Title = "COSplay",
+    Desc = [[基本上都是糖心的",]],
+    Image = "eye",
+    ImageSize = 24,
+    Color = Color3.fromHex("#FFFFFF"),
+    BackgroundColor3 = Color3.fromHex("#000000"),
+    BackgroundTransparency = 0.2,
+    OutlineColor = Color3.fromHex("#FFFFFF"),
+    OutlineThickness = 1,
+    Padding = UDim.new(0, 1)
+})
+
+Button(Tab20, "[点我复制]", function()
+    setclipboard("https://rapidtai.com/cn/tag/Cosplay")
+end)
+
+Tab20:Paragraph({
+    Title = "r34",
+    Desc = [[基本啥都有]],
+    Image = "eye",
+    ImageSize = 24,
+    Color = Color3.fromHex("#FFFFFF"),
+    BackgroundColor3 = Color3.fromHex("#000000"),
+    BackgroundTransparency = 0.2,
+    OutlineColor = Color3.fromHex("#FFFFFF"),
+    OutlineThickness = 1,
+    Padding = UDim.new(0, 1)
+})
+
+Button(Tab20, "[点我复制]", function（）
+    setclipboard("("https://rule34.xxx/")
+end)
+Tab20:Paragraph({
+    Title = "onlyfans",
+    Desc = [[不用多说]],
+    Image = "eye",
+    ImageSize = 24,
+    Color = Color3.fromHex("#FFFFFF"),
+    BackgroundColor3 = Color3.fromHex("#000000"),
+    BackgroundTransparency = 0.2,
+    OutlineColor = Color3.fromHex("#FFFFFF"),
+    OutlineThickness = 1,
+    Padding = UDim.new(0, 1)
+})
+
+Tab20:Paragraph({
+    Title = "xhamster",
+    Desc = [[第三大]],
+    Image = "eye",
+    ImageSize = 24,
+    Color = Color3.fromHex("#FFFFFF"),
+    BackgroundColor3 = Color3.fromHex("#000000"),
+    BackgroundTransparency = 0.2,
+    OutlineColor = Color3.fromHex("#FFFFFF"),
+    OutlineThickness = 1,
+    Padding = UDim.new(0, 1)
+})
+
+Button(Tab20, "[点我复制]", function()
+    setclipboard("https://xhamster.com/?ref=porndude")
+end)
+
+Tab20:Paragraph({
+    Title ="acg黄油"
+    Desc = [[撸撸撸]],
+    Image = "eye",
+    ImageSize = 24,
+    Color = Color3.fromHex("#FFFFFF"),
+    BackgroundColor3 = Color3.fromHex("#000000"),
+    BackgroundTransparency = 0.2,
+    OutlineColor = Color3.fromHex("#FFFFFF"),
+    OutlineThickness = 1,
+    Padding = UDim.new(0, 1)
+})
+
+Button(Tab20, "[点我复制]", function()
+    setclipboard("https://www.2gouacg.com/")
+end)
+
+Tab20:Paragraph({
+    Title ="成人韩漫网站"
+    Desc = [[这个是真的好看]],
+    Image = "eye",
+    ImageSize = 24,
+    Color = Color3.fromHex("#FFFFFF"),
+    BackgroundColor3 = Color3.fromHex("#000000"),
+    BackgroundTransparency = 0.2,
+    OutlineColor = Color3.fromHex("#FFFFFF"),
+    OutlineThickness = 1,
+    Padding = UDim.new(0, 1)
+})
+
+Button(Tab20, "[点我复制]", function()
+    setclipboard("https://manhwa-raw.com/")
+end)
+
+Tab20:Paragraph({
+    Title ="51爆料"
+    Desc = [[和51吃瓜不是一个]],
+    Image = "eye",
+    ImageSize = 24,
+    Color = Color3.fromHex("#FFFFFF"),
+    BackgroundColor3 = Color3.fromHex("#000000"),
+    BackgroundTransparency = 0.2,
+    OutlineColor = Color3.fromHex("#FFFFFF"),
+    OutlineThickness = 1,
+    Padding = UDim.new(0, 1)
+})
+
+Button(Tab20, "[点我复制]", function()
+    setclipboard("https://album.abmdihw.cc/")
+end)
+
+Tab20:Paragraph({
+    Title ="xvideos"
+    Desc = [[第二大]],
+    Image = "eye",
+    ImageSize = 24,
+    Color = Color3.fromHex("#FFFFFF"),
+    BackgroundColor3 = Color3.fromHex("#000000"),
+    BackgroundTransparency = 0.2,
+    OutlineColor = Color3.fromHex("#FFFFFF"),
+    OutlineThickness = 1,
+    Padding = UDim.new(0, 1)
+})
+
+Button(Tab20, "[点我复制]", function()
+    setclipboard("https://www.xvideos.com/")
+end)
+
+Tab20:Paragraph({
+    Title ="p站"
+    Desc = [[全球最大成人网站]],
+    Image = "eye",
+    ImageSize = 24,
+    Color = Color3.fromHex("#FFFFFF"),
+    BackgroundColor3 = Color3.fromHex("#000000"),
+    BackgroundTransparency = 0.2,
+    OutlineColor = Color3.fromHex("#FFFFFF"),
+    OutlineThickness = 1,
+    Padding = UDim.new(0, 1)
+})
+
+Button(Tab20, "[点我复制]", function()
+    setclipboard("https://cn.pornhub.com/")
+end)
+
+Tab20:Paragraph({
+    Title ="51吃瓜"
+    Desc = [[骚]],
+    Image = "eye",
+    ImageSize = 24,
+    Color = Color3.fromHex("#FFFFFF"),
+    BackgroundColor3 = Color3.fromHex("#000000"),
+    BackgroundTransparency = 0.2,
+    OutlineColor = Color3.fromHex("#FFFFFF"),
+    OutlineThickness = 1,
+    Padding = UDim.new(0, 1)
+})
+
+Button(Tab20, "[点我复制]", function()
+    setclipboard("https://www.jdxafwa.cc/category/rdsj/")
+end)
