@@ -2032,6 +2032,165 @@ Button(Tabb, "重进服务器", function()
         )
 end)
 
+Button(Tabb, "ui", function()
+    local themeValues = {}
+for name, _ in pairs(WindUI:GetThemes()) do
+    table.insert(themeValues, name)
+end
+
+local themeDropdown = Tabs.WindowTab:Dropdown({
+    Title = "主题选择",
+    Multi = false,
+    AllowNone = false,
+    Value = nil,
+    Values = themeValues,
+    Callback = function(theme)
+        WindUI:SetTheme(theme)
+    end
+})
+themeDropdown:Select(WindUI:GetCurrentTheme())
+
+local ToggleTransparency = Tabs.WindowTab:Toggle({
+    Title = "透明切换",
+    Callback = function(e)
+        Window:ToggleTransparency(e)
+    end,
+    Value = WindUI:GetTransparency()
+})
+
+Tabs.WindowTab:Section({ Title = "保存" })
+
+local fileNameInput = ""
+Tabs.WindowTab:Input({
+    Title = "配置名输入与处理",
+    PlaceholderText = "Enter file name",
+    Callback = function(text)
+        fileNameInput = text
+    end
+})
+
+Tabs.WindowTab:Button({
+    Title = "保存配置",
+    Callback = function()
+        if fileNameInput ~= "" then
+            SaveFile(fileNameInput, { Transparent = WindUI:GetTransparency(), Theme = WindUI:GetCurrentTheme() })
+        end
+    end
+})
+
+filesDropdown = Tabs.WindowTab:Dropdown({
+    Title = "选择配置",
+    Multi = false,
+    AllowNone = true,
+    Values = files,
+    Callback = function(selectedFile)
+        fileNameInput = selectedFile
+    end
+})
+
+Tabs.WindowTab:Button({
+    Title = "加载配置",
+    Callback = function()
+        if fileNameInput ~= "" then
+            local data = LoadFile(fileNameInput)
+            if data then
+                WindUI:Notify({
+                    Title = "File Loaded",
+                    Content = "Loaded data: " .. HttpService:JSONEncode(data),
+                    Duration = 5,
+                })
+                if data.Transparent then 
+                    Window:ToggleTransparency(data.Transparent)
+                    ToggleTransparency:SetValue(data.Transparent)
+                end
+                if data.Theme then WindUI:SetTheme(data.Theme) end
+            end
+        end
+    end
+})
+
+Tabs.WindowTab:Button({
+    Title = "覆盖配置",
+    Callback = function()
+        if fileNameInput ~= "" then
+            SaveFile(fileNameInput, { Transparent = WindUI:GetTransparency(), Theme = WindUI:GetCurrentTheme() })
+        end
+    end
+})
+
+Tabs.WindowTab:Button({
+    Title = "列表刷新",
+    Callback = function()
+        filesDropdown:Refresh(ListFiles())
+    end
+})
+
+local currentThemeName = WindUI:GetCurrentTheme()
+local themes = WindUI:GetThemes()
+
+local ThemeAccent = themes[currentThemeName].Accent
+local ThemeOutline = themes[currentThemeName].Outline
+local ThemeText = themes[currentThemeName].Text
+local ThemePlaceholderText = themes[currentThemeName].Placeholder
+
+function updateTheme()
+    WindUI:AddTheme({
+        Name = currentThemeName,
+        Accent = ThemeAccent,
+        Outline = ThemeOutline,
+        Text = ThemeText,
+        Placeholder = ThemePlaceholderText
+    })
+    WindUI:SetTheme(currentThemeName)
+end
+
+local CreateInput = Tabs.CreateThemeTab:Input({
+    Title = "主题名字",
+    Value = currentThemeName,
+    Callback = function(name)
+        currentThemeName = name
+    end
+})
+
+Tabs.CreateThemeTab:Colorpicker({
+    Title = "背景色配置",
+    Default = Color3.fromHex(ThemeAccent),
+    Callback = function(color)
+        ThemeAccent = color:ToHex()
+    end
+})
+
+Tabs.CreateThemeTab:Colorpicker({
+    Title = "轮廓颜色选择",
+    Default = Color3.fromHex(ThemeOutline),
+    Callback = function(color)
+        ThemeOutline = color:ToHex()
+    end
+})
+
+Tabs.CreateThemeTab:Colorpicker({
+    Title = "文本颜色选择",
+    Default = Color3.fromHex(ThemeText),
+    Callback = function(color)
+        ThemeText = color:ToHex()
+    end
+})
+
+Tabs.CreateThemeTab:Colorpicker({
+    Title = "文本颜色配置",
+    Default = Color3.fromHex(ThemePlaceholderText),
+    Callback = function(color)
+        ThemePlaceholderText = color:ToHex()
+    end
+})
+
+Tabs.CreateThemeTab:Button({
+    Title = "主题更新",
+    Callback = function()
+        updateTheme()
+    end
+})
+end)
 Tabd:Paragraph({
     Title = "臭冬某不更新怎么办？",
     Desc = [[直接加qq😋]],
